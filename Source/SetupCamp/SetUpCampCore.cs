@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace Syrchalis_SetUpCamp
         public SetUpCamp(ModContentPack content) : base(content)
         {
             settings = GetSettings<SetUpCampSettings>();
-            var harmony = HarmonyInstance.Create("Syrchalis.Rimworld.SetUpCamp");
+            var harmony = new Harmony("Syrchalis.Rimworld.SetUpCamp");
             MethodInfo method = typeof(Caravan).GetMethod("GetGizmos");
             HarmonyMethod prefix = null;
             HarmonyMethod postfix = new HarmonyMethod(typeof(SetUpCamp).GetMethod("GetGizmosPostfix")); ;
